@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4V Play&Learn</title>
+
+    <link rel="stylesheet" href="CSS/menuCuriosidades.css">
+</head>
+<body>
+
+    <div class="contenedor">
+
+        <div class="nav">NAV</div>
+
+
+        <div class="botones">
+
+            <h1>Curiosidades</h1>
+
+            <span>Nutre tus conocimientos...</span>
+            <br>
+            <span>¡ Escoge un valor para comenzar a aprender !</span>
+            <hr style="width: 50%; margin: auto;">
+
+            <form action="index.jsp" method="get">
+                <button class="sol" value="0" name="id"> 
+                    <img src="Imagenes/solidaridadIcon.png" alt="" class="icono"> 
+                    <b class="txt">Solidaridad</b>  
+                </button>
+                <input type="hidden" name="valor" value="solidaridad">
+                <input type="hidden" name="valorIMG" value="solidaridadIMG">
+            </form>
+  
+        <form action="index.jsp" method="post">
+            <button class="resp" value="0" name="id"> 
+                <img src="Imagenes/respSocialIcon.png" alt="" class="icono"> 
+                Responsabilidad Social
+            </button>
+            <input type="hidden" name="valor" value="responsabilidadSocial">
+            <input type="hidden" name="valorIMG" value="responsabilidadSocialIMG">
+        </form>
+
+        <form action="index.jsp" method="post">
+            <button class="disci" value="0" name="id"> 
+                <img src="Imagenes/disciIcon.png" alt="" class="icono"> 
+                Disciplina y Constancia
+            </button>
+            <input type="hidden" name="valor" value="disciplinaConstancia">
+            <input type="hidden" name="valorIMG" value="disciplinaConstanciaIMG">
+        </form>
+
+        <form action="index.jsp" method="post">
+            <button class="comp" value="0" name="id"> 
+                <img src="Imagenes/compIcon.png" alt="" class="icono"> 
+                Compañerismo 
+            </button>
+            <input type="hidden" name="valor" value="companierismo">
+            <input type="hidden" name="valorIMG" value="companierismoIMG">
+        </form>
+
+        </div>
+
+    </div>
+    
+</body>
+</html>

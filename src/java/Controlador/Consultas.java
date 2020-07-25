@@ -8,9 +8,12 @@ package Controlador;
 import Entidades.Curiosidades;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -24,32 +27,34 @@ Y para que el constructor se inicialize solo
 */
 public class Consultas extends Conexion{
 
-
-    public boolean autenticacion(String username, String password){
-
+    public List<Curiosidades> consultar(String tabla){
+        
         PreparedStatement  pst = null;
         //ResultSet para hacer consulta
         ResultSet rs = null;
-
-
+        
+        List<Curiosidades> lista =  new ArrayList<Curiosidades>();
         try{
 
             //Creamos QUERY
-            String consulta = "SELECT*FROM usuarios "
-                    + "where nickName= ? and contraseña= ?";
+            String consulta = "SELECT*FROM "+tabla;
 
             pst = getConexion().prepareStatement(consulta);
-            pst.setString(1,username);
-            pst.setString(2,password);
-
             //Guardamos la consulta
             rs = pst.executeQuery();
-
+             
             //Si tiene un registro procedemos
-            if(rs.next()){
-                return true;
-            }
-
+            while(rs.next()){
+                Curiosidades obj = new Curiosidades();
+                obj.setDescripcion(rs.getString("curiosidad"));
+                obj.setTitulo(rs.getString("titulo"));
+                obj.setId(rs.getInt("id"));
+               
+                lista.add(obj);
+            }  
+           
+            return lista;
+            
         }catch(Exception e){
             System.err.println("Error ??????: "+e);
         }finally{
@@ -66,24 +71,20 @@ public class Consultas extends Conexion{
                     System.err.println("Error: "+e);
                 }
         }
-
-
-        //Si no encuentra el usuario retorna un FALSE.
-        return false;
+        return lista;
     }
-
-
-    public List<Curiosidades> consultar(){
-        
+    
+    public ArrayList<String> consultarIMG(String tabla){
+         
         PreparedStatement  pst = null;
         //ResultSet para hacer consulta
         ResultSet rs = null;
         
-        List<Curiosidades> lista =  new ArrayList<Curiosidades>();
+        ArrayList<String> lista =  new ArrayList<String>();
         try{
 
             //Creamos QUERY
-            String consulta = "SELECT*FROM prueba";
+            String consulta = "SELECT*FROM "+tabla;
 
             pst = getConexion().prepareStatement(consulta);
             //Guardamos la consulta
@@ -91,10 +92,7 @@ public class Consultas extends Conexion{
              
             //Si tiene un registro procedemos
             while(rs.next()){
-                Curiosidades obj = new Curiosidades();
-                obj.setDescripcion(rs.getString("descripcion"));
-               
-                lista.add(obj);
+                lista.add(rs.getString("ruta"));
             }  
            
             return lista;

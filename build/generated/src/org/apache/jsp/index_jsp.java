@@ -58,42 +58,122 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("<html>\n");
       out.write("    <head>\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
-      out.write("        <title>Prueba de Guardado</title>\n");
-      out.write("    </head>\n");
-      out.write("    <body>\n");
-      out.write("        <h1>Prueba de mostrado de datos</h1>\n");
+      out.write("        <title>4V PLay&Learn</title>\n");
       out.write("        \n");
+      out.write("        <link rel=\"stylesheet\" href=\"CSS/curiosidades.css\">\n");
+      out.write("    </head>\n");
+      out.write("    \n");
+      out.write("            \n");
       out.write("        ");
  
-            List<Curiosidades> curiosidades = new ArrayList<Curiosidades>();
-            Consultas consulta = new Consultas();
+             int id = Integer.parseInt(request.getParameter("id"));
+             String valor = request.getParameter("valor");
+             String valorIMG = request.getParameter("valorIMG");
+             
+            int idActual = 0;
             
-            curiosidades = consulta.consultar();
+            List<Curiosidades> curiosidades = new ArrayList<Curiosidades>();
+            ArrayList<String> imagenes = new ArrayList<String>();
+            
+            Consultas consulta = new Consultas();
+            Consultas obj = new Consultas();
+           
+            imagenes = obj.consultarIMG(valorIMG);
+            curiosidades = consulta.consultar(valor);
+            
+            int max = imagenes.size() - 1;
+           //Generando indice aleatorio para mostrar imagen de fondo
+            int imagenIndice = (int)(Math.random() * (max - 0 + 1) + 0);
         
       out.write("\n");
-      out.write("                <table>\n");
-      out.write("            <thead>\n");
-      out.write("                <th>Curiosidad</th>\n");
-      out.write("            </thead>\n");
-      out.write("            <tbody>\n");
+      out.write("        \n");
+      out.write("    <body style=\"\n");
+      out.write("          overflow:hidden;\n");
+      out.write("          background-image: url(");
+      out.print(imagenes.get(imagenIndice));
+      out.write(");\n");
+      out.write("           background-position: center;\n");
+      out.write("            background-repeat: no-repeat;\n");
+      out.write("            background-size: cover;\n");
+      out.write("            height: 100vh;\n");
+      out.write("            color:white;\n");
+      out.write("          \"> \n");
+      out.write("        <div class=\"contenedor\">\n");
+      out.write("            \n");
+      out.write("            <div class=\"nav\">NAV</div>\n");
+      out.write("            \n");
+      out.write("            <div class=\"contenido\">\n");
+      out.write("               \n");
       out.write("                ");
 
                     for(Curiosidades curiosidad : curiosidades){
+                        if((id+1)==curiosidad.getId()){
+                        idActual = curiosidad.getId();
                 
       out.write("\n");
-      out.write("                <tr>\n");
-      out.write("                    <td>");
+      out.write("                <h1>");
+      out.print(curiosidad.getTitulo());
+      out.write("</h1>\n");
+      out.write("                <hr>\n");
+      out.write("                <p>");
       out.print(curiosidad.getDescripcion());
-      out.write("</td>\n");
-      out.write("                </tr>\n");
-      out.write("                ");
-}
+      out.write("</p>\n");
+      out.write("                    \n");
+      out.write("                    ");
+      }
+                        }
+                    
+      out.write("\n");
+      out.write("                    \n");
+      out.write("                    ");
+if(curiosidades.size() < (id+1)){
                 
+      out.write("      \n");
+      out.write("                <h1>¡ Terminaste ! </h1> \n");
+      out.write("                <h3>Puedes visitar los otros valores en el menu \n");
+      out.write("                    o volver a revisar este :)</h3>\n");
+      out.write("                ");
+
+                }
       out.write("\n");
-      out.write("            </tbody>\n");
       out.write("\n");
-      out.write("        </table>\n");
-      out.write("\n");
+      out.write("            </div>\n");
+      out.write("            \n");
+      out.write("                    <div class=\"boton1\">\n");
+      out.write("                        <form action=\"javascript:history.back()\">\n");
+      out.write("                            <button class=\"anteriorBTN\">Anterior</button>\n");
+      out.write("                        </form>\n");
+      out.write("                    </div>\n");
+      out.write("                        \n");
+      out.write("                    <div class=\"boton2\">\n");
+      out.write("                         <form action=\"menuCuriosidades.html\">\n");
+      out.write("                             <button class=\"menuBTN\">Volver al Menu</button>\n");
+      out.write("                         </form>\n");
+      out.write("                    </div>\n");
+      out.write("                        \n");
+      out.write("                    <div class=\"boton3\">\n");
+      out.write("                        <form action=\"index.jsp\" method=\"post\">\n");
+      out.write("                            <button value=\"");
+      out.print(idActual);
+      out.write("\" name=\"id\" class=\"siguienteBTN\">Siguiente</button>\n");
+      out.write("                            <input type=\"hidden\" value=\"");
+      out.print(valor);
+      out.write("\" name=\"valor\">\n");
+      out.write("                            <input type=\"hidden\" value=\"");
+      out.print(valorIMG);
+      out.write("\" name=\"valorIMG\">\n");
+      out.write("                        </form>\n");
+      out.write("                    </div>\n");
+      out.write("                        \n");
+      out.write("                        \n");
+      out.write("                        \n");
+      out.write("                    \n");
+      out.write("            \n");
+      out.write("            \n");
+      out.write("        </div>\n");
+      out.write("       \n");
+      out.write("            \n");
+      out.write("        \n");
       out.write("        \n");
       out.write("        \n");
       out.write("        \n");

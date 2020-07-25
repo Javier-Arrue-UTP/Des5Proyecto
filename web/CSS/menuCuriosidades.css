@@ -1,0 +1,117 @@
+*{
+    margin:0;
+    padding:0;
+    overflow: hidden;
+}
+body{
+    background-image: url(fondoCuriosidades.jpg);
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.contenedor{
+    display:grid;
+    grid-template-columns: repeat(1,1fr);
+    grid-template-rows: repeat(3,auto);
+    grid-template-areas: "nav" 
+                        "botones";
+
+    gap:60px;
+}
+
+.nav{
+    background-color: rgb(54, 54, 54);
+    grid-area: nav;
+}
+
+.botones h1{
+    font-size: 40px;
+}
+
+.botones span{
+    font-size: 20px;
+    font-style: italic;
+}
+
+.contenedor{
+    width:100%;
+    text-align: center;
+
+    color: white;
+    
+}
+
+.botones{
+    grid-area: botones;
+}
+
+.botones > form{
+    padding: 0.5%;
+}
+
+.sol, .resp, .disci, .comp{
+    width: 40%;
+    height: 90px;
+    padding: 15px 32px;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    font-size: 20px;
+    color: white;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.sol{
+    background-color: #FFB90F; 
+}
+
+.sol:hover{
+    border-left: 18px solid #FFB90F;
+    background-color: white;
+    color: black;
+}
+
+.icono{
+    height: 40px;
+    margin-bottom: -10px;
+}
+
+
+.resp{
+    background-color: #1C9CF0;
+    
+}
+
+.resp:hover{
+
+    border-left: 18px solid #1C9CF0;
+    background-color: white;
+    color: black;
+}
+
+.disci{
+    background-color:#22C514;
+
+}
+.disci:hover{
+
+    border-left: 18px solid #22C514;
+    background-color: white;
+    color: black;
+}
+
+.comp{
+    background-color: #833fd7;
+
+}
+.comp:hover{
+
+    border-left: 18px solid #833fd7;
+    background-color: white;
+    color: black;
+}

@@ -1,0 +1,83 @@
+.contenedor{
+    display:grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: repeat(3,auto);
+    grid-template-areas: "nav nav nav" 
+                        "contenido contenido contenido"
+                        "boton1 boton2 boton3";
+
+    gap:60px;
+    text-align: center;
+}
+
+.nav{ 
+    background-color: rgb(54, 54, 54);
+    grid-area: nav;
+}
+
+.contenido{
+    margin:auto;
+    width:30%;
+    background-color:rgba(0, 0, 0, 0.39);
+    padding:0px 100px 50px 100px;
+    grid-area: contenido;
+    transition-duration: 0.4s;
+    border-radius:10px;
+    box-shadow: 0px 0px 1px 1px rgba(255,255,255,1);
+    
+}
+
+.contenido:hover{
+    width:30.5%;
+    box-shadow: 0px 0px 1.5px 5px rgba(255,255,255,1);
+}
+
+.contenido h1{
+    font-size:35px;
+    
+}
+
+.contenido p{
+    font-size:20px;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.boton1{
+    grid-area: boton1;
+}
+.boton2{
+    grid-area: boton2;
+}
+.boton3{
+    grid-area: boton3;
+}
+
+
+.anteriorBTN, .menuBTN, .siguienteBTN{
+    width: 35%;
+    padding: 15px 32px;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 4px;
+    background:rgb(206, 206, 206);
+}
+
+
+.anteriorBTN:hover{
+    width:40%;
+    background:white;
+}
+
+.menuBTN:hover{
+    width:40%;
+    background:white;
+}
+
+.siguienteBTN:hover{
+    width:40%;
+    background:white;
+}

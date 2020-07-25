@@ -12,7 +12,16 @@ package Entidades;
  * @author javi0
  */
 public class Curiosidades {
-    String descripcion;
+    String descripcion,titulo;
+    private int id;
+    
+    public void setTitulo(String titulo){
+        this.titulo = titulo;
+    }
+    
+    public String getTitulo(){
+        return titulo;
+    }
     
     public String getDescripcion(){
         return descripcion;
@@ -21,5 +30,15 @@ public class Curiosidades {
     public void setDescripcion(String descripcion){
         this.descripcion = descripcion;
     }
+    
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
+    
     
 }

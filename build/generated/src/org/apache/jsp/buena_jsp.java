@@ -51,7 +51,12 @@ public final class buena_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <title>JSP Page</title>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
-      out.write("        <h1>Hello World!</h1>\n");
+      out.write("        <h1>Cha pero....</h1>\n");
+      out.write("        <form action=\"index.jsp\" action=\"post\">\n");
+      out.write("            \n");
+      out.write("            <button value=\"0\" name=\"id\">Continuar</button>\n");
+      out.write("            \n");
+      out.write("        </form>\n");
       out.write("    </body>\n");
       out.write("</html>\n");
     } catch (Throwable t) {

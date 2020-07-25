@@ -14,34 +14,100 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Prueba de Guardado</title>
-    </head>
-    <body>
-        <h1>Prueba de mostrado de datos</h1>
+        <title>4V PLay&Learn</title>
         
-        <% 
-            List<Curiosidades> curiosidades = new ArrayList<Curiosidades>();
-            Consultas consulta = new Consultas();
+        <link rel="stylesheet" href="CSS/curiosidades.css">
+    </head>
+    
             
-            curiosidades = consulta.consultar();
+        <% 
+             int id = Integer.parseInt(request.getParameter("id"));
+             String valor = request.getParameter("valor");
+             String valorIMG = request.getParameter("valorIMG");
+             
+            int idActual = 0;
+            
+            List<Curiosidades> curiosidades = new ArrayList<Curiosidades>();
+            ArrayList<String> imagenes = new ArrayList<String>();
+            
+            Consultas consulta = new Consultas();
+            Consultas obj = new Consultas();
+           
+            imagenes = obj.consultarIMG(valorIMG);
+            curiosidades = consulta.consultar(valor);
+            
+            int max = imagenes.size() - 1;
+           //Generando indice aleatorio para mostrar imagen de fondo
+            int imagenIndice = (int)(Math.random() * (max - 0 + 1) + 0);
         %>
-                <table>
-            <thead>
-                <th>Curiosidad</th>
-            </thead>
-            <tbody>
+        
+    <body style="
+          overflow:hidden;
+          background-image: url(<%=imagenes.get(imagenIndice)%>);
+           background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 100vh;
+            color:white;
+          "> 
+        <div class="contenedor">
+            
+            <div class="nav">NAV</div>
+            
+            <div class="contenido">
+               
                 <%
                     for(Curiosidades curiosidad : curiosidades){
+                        if((id+1)==curiosidad.getId()){
+                        idActual = curiosidad.getId();
                 %>
-                <tr>
-                    <td><%=curiosidad.getDescripcion()%></td>
-                </tr>
-                <%}
-                %>
-            </tbody>
+                <h1><%=curiosidad.getTitulo()%></h1>
+                <hr>
+                <p><%=curiosidad.getDescripcion()%></p>
+                    
+                    <%      }
+                        }
+                    %>
+                    
+                    <%if(curiosidades.size() < (id+1)){
+                %>      
+                <h1>¡ Terminaste ! </h1> 
+                <h3>Puedes visitar los otros valores en el menu 
+                    o volver a revisar este :)</h3>
+                <%
+                }%>
 
-        </table>
-
+            </div>
+            
+                    <div class="boton1">
+                        <form action="javascript:history.back()">
+                            <button class="anteriorBTN">Anterior</button>
+                        </form>
+                    </div>
+                        
+                    <div class="boton2">
+                         <form action="menuCuriosidades.html">
+                             <button class="menuBTN">Volver al Menu</button>
+                         </form>
+                    </div>
+                        
+                    <div class="boton3">
+                        <form action="index.jsp" method="post">
+                            <button value="<%=idActual%>" name="id" class="siguienteBTN">Siguiente</button>
+                            <input type="hidden" value="<%=valor%>" name="valor">
+                            <input type="hidden" value="<%=valorIMG%>" name="valorIMG">
+                        </form>
+                    </div>
+                        
+                        
+                        
+                    
+            
+            
+        </div>
+       
+            
+        
         
         
         
